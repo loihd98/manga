@@ -1,4 +1,4 @@
-# 📚 khotruyen.vn - Modern Story Reading Platform
+# 📚 vivutruyenhay.com - Modern Story Reading Platform
 
 A comprehensive web application for reading stories and novels online with advanced features and professional UI/UX.
 
@@ -244,8 +244,8 @@ webtruyen/
 
 ## 🔗 Production Instance
 
-- **Domain:** [khotruyen.vn](https://khotruyen.vn)
-- **Server:** VPS at 180.93.138.93
+- **Domain:** [vivutruyenhay.com](https://vivutruyenhay.com)
+- **Server:** VPS at 103.199.18.123
 - **SSL:** Let's Encrypt certificates
 - **CDN:** Nginx static file serving
 
@@ -263,4 +263,4 @@ For issues and questions:
 
 ---
 
-**Built with ❤️ by the khotruyen.vn Team**
+**Built with ❤️ by the vivutruyenhay.com Team**

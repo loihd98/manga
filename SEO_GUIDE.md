@@ -1,4 +1,4 @@
-# SEO Configuration Guide - khotruyen.vn
+# SEO Configuration Guide - vivutruyenhay.com
 
 ## ✅ Đã được cài đặt
 
@@ -64,7 +64,7 @@ Các file SVG hiện tại chỉ là placeholder. Bạn cần:
 File `.env.local`:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://khotruyen.vn
+NEXT_PUBLIC_SITE_URL=https://vivutruyenhay.com
 NEXT_PUBLIC_FB_APP_ID=your-actual-facebook-app-id
 NEXT_PUBLIC_TWITTER_HANDLE=@Evanloi9x
 ```
@@ -259,7 +259,7 @@ npm run start
 Khi share link trên Facebook/Instagram/Twitter, sẽ hiển thị:
 
 - **Image**: og-image.svg (1200x630px)
-- **Title**: khotruyen.vn - Đọc truyện online miễn phí
+- **Title**: vivutruyenhay.com - Đọc truyện online miễn phí
 - **Description**: Kho truyện online miễn phí...
 - **Author**: Evanloi9x
 

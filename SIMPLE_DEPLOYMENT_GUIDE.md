@@ -81,21 +81,30 @@ sudo ufw enable
 
 ### 2. Install Docker
 
+> ⚠️ **Ubuntu 20.04 (focal):** Do NOT use `curl -fsSL https://get.docker.com | sh` — it will fail because  
+> `docker-model-plugin` is not available on focal. Use the manual apt method below instead.
+
 ```bash
-# Install Docker via official script (works on Ubuntu 20.04)
-curl -fsSL https://get.docker.com | sh
+# Add Docker's official GPG key
+sudo apt-get install -y ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+# Add Docker apt repository (focal)
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Install Docker (without docker-model-plugin which is unavailable on focal)
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-buildx-plugin
+
+# Add current user to docker group
 sudo usermod -aG docker $USER
 
-# Reload group without logout (or logout/login)
+# Reload group without logout
 newgrp docker
-
-# Install Docker Compose plugin (Ubuntu 20.04: must use Docker's repo, not Ubuntu's)
-sudo apt-get install -y docker-compose-plugin
-
-# If docker-compose-plugin not found, install manually:
-# DOCKER_COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
-# sudo curl -SL "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-linux-x86_64" -o /usr/local/lib/docker/cli-plugins/docker-compose
-# sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
 # Verify
 docker --version
