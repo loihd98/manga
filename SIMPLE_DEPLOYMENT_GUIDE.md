@@ -111,6 +111,36 @@ docker --version
 docker compose version
 ```
 
+### 2b. Configure Docker Registry Mirror (bắt buộc cho VPS Việt Nam)
+
+> ⚠️ VPS tại Việt Nam thường không kết nối được trực tiếp tới `registry-1.docker.io` (TLS timeout).  
+> Cần cấu hình mirror trước khi chạy `docker compose`.
+
+```bash
+# Tạo hoặc chỉnh sửa file daemon.json
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<EOF
+{
+  "registry-mirrors": [
+    "https://mirror.gcr.io",
+    "https://registry.docker-cn.com",
+    "https://docker.mirrors.ustc.edu.cn"
+  ],
+  "dns": ["8.8.8.8", "1.1.1.1"]
+}
+EOF
+
+# Reload và restart Docker daemon
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+# Verify Docker is running
+sudo systemctl status docker
+
+# Test pull works
+docker pull hello-world
+```
+
 ### 3. Clone project trên VPS
 
 ```bash
@@ -353,8 +383,8 @@ docker compose -f docker-compose.prod.yml logs postgres
 
 ### Production (vivutruyenhay.com)
 
-| URL                              | Proxy To             | Description     |
-| -------------------------------- | -------------------- | --------------- |
+| URL                                   | Proxy To             | Description     |
+| ------------------------------------- | -------------------- | --------------- |
 | `https://vivutruyenhay.com/`          | `frontend:3000`      | Next.js website |
 | `https://vivutruyenhay.com/api/*`     | `backend:5000/api/*` | API endpoints   |
 | `https://vivutruyenhay.com/uploads/*` | `/uploads/*`         | Static files    |

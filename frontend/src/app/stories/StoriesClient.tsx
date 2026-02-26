@@ -356,39 +356,39 @@ export default function StoriesClient({
             selectedType ||
             selectedGenre ||
             sortBy !== "createdAt") && (
-            <div className="hidden sm:flex flex-wrap gap-2 pt-2 border-t border-gray-200 dark:border-gray-600">
-              <span className="text-sm text-gray-600 dark:text-gray-400">
-                Bộ lọc đang áp dụng:
-              </span>
-              {searchQuery && (
-                <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">
-                  🔍 "{searchQuery}"
+              <div className="hidden sm:flex flex-wrap gap-2 pt-2 border-t border-gray-200 dark:border-gray-600">
+                <span className="text-sm text-gray-600 dark:text-gray-400">
+                  Bộ lọc đang áp dụng:
                 </span>
-              )}
-              {selectedType && (
-                <span className="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-xs">
-                  {selectedType === "TEXT"
-                    ? "📖 Truyện chữ"
-                    : "🎧 Truyện audio"}
-                </span>
-              )}
-              {selectedGenre && (
-                <span className="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-xs">
-                  📚 {genres.find((g) => g.slug === selectedGenre)?.name}
-                </span>
-              )}
-              {sortBy !== "createdAt" && (
-                <span className="px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full text-xs">
-                  🔄{" "}
-                  {sortBy === "viewCount"
-                    ? "Xem nhiều"
-                    : sortBy === "title"
-                    ? "Tên A-Z"
-                    : "Cập nhật"}
-                </span>
-              )}
-            </div>
-          )}
+                {searchQuery && (
+                  <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">
+                    🔍 "{searchQuery}"
+                  </span>
+                )}
+                {selectedType && (
+                  <span className="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-xs">
+                    {selectedType === "TEXT"
+                      ? "📖 Truyện chữ"
+                      : "🎧 Truyện audio"}
+                  </span>
+                )}
+                {selectedGenre && (
+                  <span className="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-xs">
+                    📚 {genres.find((g) => g.slug === selectedGenre)?.name}
+                  </span>
+                )}
+                {sortBy !== "createdAt" && (
+                  <span className="px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full text-xs">
+                    🔄{" "}
+                    {sortBy === "viewCount"
+                      ? "Xem nhiều"
+                      : sortBy === "title"
+                        ? "Tên A-Z"
+                        : "Cập nhật"}
+                  </span>
+                )}
+              </div>
+            )}
         </div>
       </div>
 
