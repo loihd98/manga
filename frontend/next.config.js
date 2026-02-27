@@ -9,47 +9,14 @@ const nextConfig = {
   },
 
   images: {
+    // Custom loader bypasses _next/image optimizer — nginx serves
+    // /uploads/ directly with aggressive caching.  This avoids the
+    // 400 errors caused by standalone mode not being able to read
+    // volume-mounted files.
+    loader: "custom",
+    loaderFile: "./src/imageLoader.ts",
     formats: ["image/webp", "image/avif"],
-    remotePatterns: [
-      {
-        protocol: "http",
-        hostname: "localhost",
-        pathname: "/uploads/**",
-      },
-      {
-        protocol: "http",
-        hostname: "127.0.0.1",
-        pathname: "/uploads/**",
-      },
-      {
-        protocol: "http",
-        hostname: "nginx",
-        pathname: "/uploads/**",
-      },
-      {
-        protocol: "http",
-        hostname: "backend",
-        port: "5000",
-        pathname: "/uploads/**",
-      },
-      {
-        protocol: "https",
-        hostname: "vivutruyenhay.com",
-        pathname: "/uploads/**",
-      },
-      {
-        protocol: "https",
-        hostname: "**",
-        pathname: "/uploads/**",
-      },
-      {
-        protocol: "https",
-        hostname: "picsum.photos",
-        pathname: "/**",
-      },
-    ],
-    // Minimize image optimizer issues in Docker
-    minimumCacheTTL: 60,
+    // minimumCacheTTL not needed with custom loader
   },
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
