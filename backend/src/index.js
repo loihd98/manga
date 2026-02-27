@@ -63,14 +63,16 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 // Serve static files (uploads)
 app.use("/uploads", express.static(config.uploadPath || "./uploads"));
 
-// Health check
-app.get("/health", (req, res) => {
+// Health check (accessible at /health and /api/health)
+const healthHandler = (req, res) => {
   res.status(200).json({
     status: "OK",
     timestamp: new Date().toISOString(),
     environment: config.nodeEnv,
   });
-});
+};
+app.get("/health", healthHandler);
+app.get("/api/health", healthHandler);
 
 // API routes will be added here
 app.use("/api/auth", require("./routes/auth"));
