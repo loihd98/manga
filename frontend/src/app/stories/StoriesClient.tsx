@@ -118,8 +118,8 @@ export default function StoriesClient({
       const response = await apiClient.get(`/stories?${params}`);
       console.log(response.data, "Fetched stories data");
 
-      setStories(response.data.data?.data || []);
-      setPagination(response.data?.data.pagination);
+      setStories(response.data.data || []);
+      setPagination(response.data?.pagination);
     } catch (error) {
       console.error("Error fetching stories:", error);
       setStories([]);

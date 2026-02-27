@@ -153,14 +153,12 @@ class StoriesController {
       const total = await prisma.story.count({ where });
 
       res.json({
-        data: {
-          data: stories,
-          pagination: {
-            page,
-            limit,
-            total,
-            pages: Math.ceil(total / limit),
-          },
+        data: stories,
+        pagination: {
+          page,
+          limit,
+          total,
+          pages: Math.ceil(total / limit),
         },
       });
     } catch (error) {

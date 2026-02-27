@@ -182,7 +182,7 @@ export default function StoryDetailClient({ params, initialStory }: StoryPagePro
         sort: "viewCount",
         limit: 8,
       });
-      setTrendingStories(response.data?.data || []);
+      setTrendingStories(response.data || []);
     } catch (error) {
       console.error("Error fetching trending stories:", error);
     } finally {
