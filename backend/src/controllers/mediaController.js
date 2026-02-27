@@ -444,7 +444,7 @@ class MediaController {
 
       const { file } = req;
       const type = file.mimetype.startsWith("image/") ? "image" : "audio";
-      const url = `/uploads/${type}s/${file.filename}`;
+      const url = `/uploads/${type}/${file.filename}`;
 
       const mediaFile = await prisma.media.create({
         data: {
@@ -489,9 +489,8 @@ class MediaController {
 
       // Delete physical file
       const filePath = path.join(
-        __dirname,
-        "../../uploads",
-        `${existingMedia.type}s`,
+        config.uploadPath || "./uploads",
+        existingMedia.type,
         existingMedia.filename
       );
       try {

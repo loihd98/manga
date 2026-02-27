@@ -25,18 +25,24 @@ app.use(
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 200, // limit each IP to 200 requests per 15 minutes
+  max: 1000, // limit each IP to 1000 requests per 15 minutes
   standardHeaders: true,
   legacyHeaders: false,
-  message: { error: "Too Many Requests", message: "Too many requests from this IP, please try again later." },
+  message: {
+    error: "Too Many Requests",
+    message: "Too many requests from this IP, please try again later.",
+  },
 });
 app.use("/api/", limiter);
 
 // Stricter rate limit for auth endpoints
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 20, // 20 attempts per 15 minutes
-  message: { error: "Too Many Requests", message: "Too many login attempts, please try again later." },
+  max: 100, // 50 attempts per 15 minutes
+  message: {
+    error: "Too Many Requests",
+    message: "Too many login attempts, please try again later.",
+  },
 });
 app.use("/api/auth/login", authLimiter);
 app.use("/api/auth/register", authLimiter);
