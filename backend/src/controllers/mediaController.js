@@ -61,7 +61,7 @@ const audioFilter = (req, file, cb) => {
   } else {
     cb(
       new Error("Chỉ cho phép upload file audio (MP3, WAV, OGG, AAC, FLAC)"),
-      false
+      false,
     );
   }
 };
@@ -81,7 +81,7 @@ const imageFilter = (req, file, cb) => {
   } else {
     cb(
       new Error("Chỉ cho phép upload file hình ảnh (JPG, PNG, WEBP, GIF)"),
-      false
+      false,
     );
   }
 };
@@ -145,9 +145,9 @@ const universalFilter = (req, file, cb) => {
   } else {
     cb(
       new Error(
-        "Chỉ cho phép upload file hình ảnh (JPG, PNG, WEBP, GIF) hoặc audio (MP3, WAV, OGG, AAC, FLAC)"
+        "Chỉ cho phép upload file hình ảnh (JPG, PNG, WEBP, GIF) hoặc audio (MP3, WAV, OGG, AAC, FLAC)",
       ),
-      false
+      false,
     );
   }
 };
@@ -491,7 +491,7 @@ class MediaController {
       const filePath = path.join(
         config.uploadPath || "./uploads",
         existingMedia.type,
-        existingMedia.filename
+        existingMedia.filename,
       );
       try {
         if (fs.existsSync(filePath)) {
