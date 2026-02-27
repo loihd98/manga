@@ -7,10 +7,15 @@ import JsonLd, {
 } from "../components/seo/JsonLd";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vivutruyenhay.com";
-const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "/api";
+
+function getApiUrl() {
+  return process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+}
 
 async function fetchHomepageData() {
   try {
+    const API_URL = getApiUrl();
+    console.log("[Homepage] Fetching data from API_URL:", API_URL);
     const [
       filmReviewsRes,
       textStoriesRes,

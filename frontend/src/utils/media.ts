@@ -18,24 +18,31 @@ export const getMediaBaseUrl = (): string => {
 export const getMediaUrl = (url: string): string => {
   if (!url) return "";
 
-  // If it's already a full URL, return as is
+  // If it's already a full URL with our domain, extract the path for _next/image compatibility
   if (url.startsWith("http")) {
+    try {
+      const urlObj = new URL(url);
+      // If it's our own domain, use relative path so _next/image can resolve internally
+      if (urlObj.pathname.startsWith("/uploads/")) {
+        return urlObj.pathname;
+      }
+    } catch {
+      // Invalid URL, continue with other checks
+    }
     return url;
   }
 
-  // If it starts with /uploads/, prepend the base URL (nginx serves these directly)
+  // If it starts with /uploads/, return as-is (relative path works with _next/image)
   if (url.startsWith("/uploads/")) {
-    const fullUrl = `${getMediaBaseUrl()}${url}`;
-    // console.log("Media URL generated:", { input: url, output: fullUrl });
-    return fullUrl;
+    return url;
   }
 
   // If it's just a filename, assume it's in uploads
   if (!url.startsWith("/")) {
-    return `${getMediaBaseUrl()}/uploads/${url}`;
+    return `/uploads/${url}`;
   }
 
-  return `${getMediaBaseUrl()}${url}`;
+  return url;
 };
 
 // Get the correct API URL for file uploads

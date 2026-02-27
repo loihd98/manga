@@ -27,6 +27,17 @@ const nextConfig = {
         pathname: "/uploads/**",
       },
       {
+        protocol: "http",
+        hostname: "backend",
+        port: "5000",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "vivutruyenhay.com",
+        pathname: "/uploads/**",
+      },
+      {
         protocol: "https",
         hostname: "**",
         pathname: "/uploads/**",
@@ -37,6 +48,8 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
+    // Minimize image optimizer issues in Docker
+    minimumCacheTTL: 60,
   },
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
