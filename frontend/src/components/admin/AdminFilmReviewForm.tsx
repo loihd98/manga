@@ -743,4 +743,5 @@ const AdminFilmReviewForm: React.FC<AdminFilmReviewFormProps> = ({
   );
 };
 
+export { AdminFilmReviewForm };
 export default AdminFilmReviewForm;
