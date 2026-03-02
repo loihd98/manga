@@ -8,28 +8,28 @@
 
 ## 2. Tech Stack Chi Tiết
 
-| Layer | Công nghệ | Phiên bản | Vai trò |
-|-------|-----------|-----------|---------|
-| **Frontend** | Next.js (App Router) | 14.x | SSR/SSG, SEO, routing |
-| | TypeScript | - | Type safety |
-| | Tailwind CSS | - | Utility-first styling |
-| | Redux Toolkit | 1.9.x | Global state management |
-| | redux-persist | - | Persist auth state qua reload |
-| | Axios | 1.12.x | HTTP client |
-| | Framer Motion | 10.x | Animation |
-| **Backend** | Node.js + Express | - | REST API server |
-| | Prisma ORM | 5.6.x | Database ORM, migrations |
-| | bcryptjs | - | Password hashing |
-| | jsonwebtoken (JWT) | - | Access token + Refresh token |
-| | slugify | - | URL-friendly slug generation |
-| | multer | - | File upload handling |
-| **Database** | PostgreSQL | 15.x | Relational database chính |
-| **Infrastructure** | Docker + Docker Compose | - | Containerization |
-| | Nginx | alpine | Reverse proxy, static serving, SSL termination |
-| | Let's Encrypt | - | Free SSL certificate |
-| **SEO** | JSON-LD Structured Data | - | Schema.org markup |
-| | Dynamic Sitemap | - | Auto-generated từ DB |
-| | Open Graph + Meta Tags | - | Social sharing optimization |
+| Layer              | Công nghệ               | Phiên bản | Vai trò                                        |
+| ------------------ | ----------------------- | --------- | ---------------------------------------------- |
+| **Frontend**       | Next.js (App Router)    | 14.x      | SSR/SSG, SEO, routing                          |
+|                    | TypeScript              | -         | Type safety                                    |
+|                    | Tailwind CSS            | -         | Utility-first styling                          |
+|                    | Redux Toolkit           | 1.9.x     | Global state management                        |
+|                    | redux-persist           | -         | Persist auth state qua reload                  |
+|                    | Axios                   | 1.12.x    | HTTP client                                    |
+|                    | Framer Motion           | 10.x      | Animation                                      |
+| **Backend**        | Node.js + Express       | -         | REST API server                                |
+|                    | Prisma ORM              | 5.6.x     | Database ORM, migrations                       |
+|                    | bcryptjs                | -         | Password hashing                               |
+|                    | jsonwebtoken (JWT)      | -         | Access token + Refresh token                   |
+|                    | slugify                 | -         | URL-friendly slug generation                   |
+|                    | multer                  | -         | File upload handling                           |
+| **Database**       | PostgreSQL              | 15.x      | Relational database chính                      |
+| **Infrastructure** | Docker + Docker Compose | -         | Containerization                               |
+|                    | Nginx                   | alpine    | Reverse proxy, static serving, SSL termination |
+|                    | Let's Encrypt           | -         | Free SSL certificate                           |
+| **SEO**            | JSON-LD Structured Data | -         | Schema.org markup                              |
+|                    | Dynamic Sitemap         | -         | Auto-generated từ DB                           |
+|                    | Open Graph + Meta Tags  | -         | Social sharing optimization                    |
 
 ---
 
@@ -69,20 +69,20 @@ Browser/Client
 
 ```yaml
 services:
-  postgres:    # Database
-  backend:     # Express API server
-  frontend:    # Next.js SSR server
-  nginx:       # Reverse proxy + SSL + static files
+  postgres: # Database
+  backend: # Express API server
+  frontend: # Next.js SSR server
+  nginx: # Reverse proxy + SSL + static files
 ```
 
 ### 3.3 Docker Services (Development)
 
 ```yaml
 services:
-  postgres:    # Database
-  backend:     # Express with nodemon (hot reload)
-  frontend:    # Next.js dev server (hot reload)
-  nginx:       # Reverse proxy (no SSL)
+  postgres: # Database
+  backend: # Express with nodemon (hot reload)
+  frontend: # Next.js dev server (hot reload)
+  nginx: # Reverse proxy (no SSL)
 ```
 
 ---
@@ -299,7 +299,7 @@ Khi app load lại, `redux-persist` khôi phục `user` từ localStorage nhưng
 return {
   ...state,
   user: persistedAuth.user,
-  accessToken: null,  // ← forced null
+  accessToken: null, // ← forced null
   isAuthenticated: true,
   isLoading: false,
   error: null,
@@ -310,9 +310,11 @@ return {
 
 ```typescript
 switch (user.role) {
-  case "ADMIN": return "/admin";
+  case "ADMIN":
+    return "/admin";
   case "USER":
-  default: return "/";
+  default:
+    return "/";
 }
 ```
 
@@ -370,21 +372,21 @@ switch (user.role) {
 
 ### 6.2 Bảng dữ liệu chính
 
-| Model | Mô tả | Quan hệ |
-|-------|--------|---------|
-| **User** | Tài khoản, hỗ trợ OAuth (Google) | `1:N` → Story, Comment, Bookmark |
-| **Story** | Truyện chữ hoặc audio | `N:M` → Genre, `1:N` → Chapter |
-| **Chapter** | Chương truyện (text/audio) | `1:N` → Comment |
-| **Genre** | Thể loại truyện | `N:M` → Story |
-| **Comment** | Bình luận threaded trên chapter | `N:1` → User, Chapter |
-| **Bookmark** | Đánh dấu truyện | `N:1` → User, Story |
-| **FilmReview** | Bài review phim | `N:M` → FilmCategory, FilmActor |
-| **FilmComment** | Bình luận review phim | `N:1` → User, FilmReview |
-| **FilmCategory** | Thể loại phim | `N:M` → FilmReview |
-| **FilmActor** | Diễn viên | `N:M` → FilmReview |
-| **AffiliateLink** | Link liên kết quảng cáo | Optional → Story, Chapter |
-| **Media** | File upload (image/audio) | Standalone |
-| **RefreshToken** | JWT refresh token stored in DB | `N:1` → User |
+| Model             | Mô tả                            | Quan hệ                          |
+| ----------------- | -------------------------------- | -------------------------------- |
+| **User**          | Tài khoản, hỗ trợ OAuth (Google) | `1:N` → Story, Comment, Bookmark |
+| **Story**         | Truyện chữ hoặc audio            | `N:M` → Genre, `1:N` → Chapter   |
+| **Chapter**       | Chương truyện (text/audio)       | `1:N` → Comment                  |
+| **Genre**         | Thể loại truyện                  | `N:M` → Story                    |
+| **Comment**       | Bình luận threaded trên chapter  | `N:1` → User, Chapter            |
+| **Bookmark**      | Đánh dấu truyện                  | `N:1` → User, Story              |
+| **FilmReview**    | Bài review phim                  | `N:M` → FilmCategory, FilmActor  |
+| **FilmComment**   | Bình luận review phim            | `N:1` → User, FilmReview         |
+| **FilmCategory**  | Thể loại phim                    | `N:M` → FilmReview               |
+| **FilmActor**     | Diễn viên                        | `N:M` → FilmReview               |
+| **AffiliateLink** | Link liên kết quảng cáo          | Optional → Story, Chapter        |
+| **Media**         | File upload (image/audio)        | Standalone                       |
+| **RefreshToken**  | JWT refresh token stored in DB   | `N:1` → User                     |
 
 ---
 
@@ -474,12 +476,12 @@ Request → CORS → JSON Parser → Cookie Parser
 ```typescript
 // Axios instance với interceptors
 const apiClient = axios.create({
-  baseURL: '/api',
-  withCredentials: true,  // ← gửi cookie tự động
+  baseURL: "/api",
+  withCredentials: true, // ← gửi cookie tự động
 });
 
 // Request interceptor: gắn Authorization header
-apiClient.interceptors.request.use(config => {
+apiClient.interceptors.request.use((config) => {
   const token = store.getState().auth.accessToken;
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
@@ -487,12 +489,12 @@ apiClient.interceptors.request.use(config => {
 
 // Response interceptor: auto-refresh on 401
 apiClient.interceptors.response.use(
-  response => response,
-  async error => {
+  (response) => response,
+  async (error) => {
     if (error.response?.status === 401 && !originalRequest._retry) {
       // Gọi /auth/refresh → lấy accessToken mới → retry request
     }
-  }
+  },
 );
 ```
 
@@ -566,13 +568,13 @@ export default async function StoryPage({ params }) {
 
 ### 8.3 Async Thunks (authSlice.ts)
 
-| Thunk | API Call | Mô tả |
-|-------|---------|--------|
-| `loginUser` | `POST /auth/login` | Login, nhận accessToken + set cookie |
-| `registerUser` | `POST /auth/register` | Register + auto-login |
-| `refreshToken` | `POST /auth/refresh` | Silent refresh, cookie auto-sent |
-| `logoutUser` | `POST /auth/logout` | Clear cookie + clear state |
-| `getProfile` | `GET /auth/profile` | Fetch user profile |
+| Thunk          | API Call              | Mô tả                                |
+| -------------- | --------------------- | ------------------------------------ |
+| `loginUser`    | `POST /auth/login`    | Login, nhận accessToken + set cookie |
+| `registerUser` | `POST /auth/register` | Register + auto-login                |
+| `refreshToken` | `POST /auth/refresh`  | Silent refresh, cookie auto-sent     |
+| `logoutUser`   | `POST /auth/logout`   | Clear cookie + clear state           |
+| `getProfile`   | `GET /auth/profile`   | Fetch user profile                   |
 
 ---
 
@@ -580,29 +582,29 @@ export default async function StoryPage({ params }) {
 
 ### 9.1 Các layer SEO
 
-| Layer | File/Component | Mô tả |
-|-------|---------------|--------|
-| **Global Metadata** | `app/layout.tsx` | Title template, description, robots, icons, manifest |
-| **Page Metadata** | Mỗi `page.tsx` | Dynamic `generateMetadata()` function |
-| **Structured Data** | `components/seo/JsonLd.tsx` | Schema.org JSON-LD |
-| **Sitemap** | `app/sitemap.ts` | Auto-generated from database |
-| **robots.txt** | `public/robots.txt` | Crawling rules |
-| **PWA** | `public/manifest.json` | Progressive Web App metadata |
-| **Dynamic Icons** | `app/icon.tsx`, `apple-icon.tsx` | Generated at build time |
-| **OG Image** | `app/opengraph-image.tsx` | Dynamic Open Graph image |
+| Layer               | File/Component                   | Mô tả                                                |
+| ------------------- | -------------------------------- | ---------------------------------------------------- |
+| **Global Metadata** | `app/layout.tsx`                 | Title template, description, robots, icons, manifest |
+| **Page Metadata**   | Mỗi `page.tsx`                   | Dynamic `generateMetadata()` function                |
+| **Structured Data** | `components/seo/JsonLd.tsx`      | Schema.org JSON-LD                                   |
+| **Sitemap**         | `app/sitemap.ts`                 | Auto-generated from database                         |
+| **robots.txt**      | `public/robots.txt`              | Crawling rules                                       |
+| **PWA**             | `public/manifest.json`           | Progressive Web App metadata                         |
+| **Dynamic Icons**   | `app/icon.tsx`, `apple-icon.tsx` | Generated at build time                              |
+| **OG Image**        | `app/opengraph-image.tsx`        | Dynamic Open Graph image                             |
 
 ### 9.2 JSON-LD Schemas có sẵn
 
 ```typescript
 // Trong components/seo/JsonLd.tsx
-getOrganizationSchema()    // Schema.org/Organization  
-getWebsiteSchema()         // Schema.org/WebSite + SearchAction
-getBookSchema()            // Schema.org/Book (cho Story)
-getArticleSchema()         // Schema.org/Article (cho Chapter)
-getAudioBookSchema()       // Schema.org/AudioBook (cho Audio Story)
-getBreadcrumbSchema()      // Schema.org/BreadcrumbList
-getFilmReviewSchema()      // Schema.org/Review + Movie
-getFilmReviewsListSchema() // Schema.org/CollectionPage
+getOrganizationSchema(); // Schema.org/Organization
+getWebsiteSchema(); // Schema.org/WebSite + SearchAction
+getBookSchema(); // Schema.org/Book (cho Story)
+getArticleSchema(); // Schema.org/Article (cho Chapter)
+getAudioBookSchema(); // Schema.org/AudioBook (cho Audio Story)
+getBreadcrumbSchema(); // Schema.org/BreadcrumbList
+getFilmReviewSchema(); // Schema.org/Review + Movie
+getFilmReviewsListSchema(); // Schema.org/CollectionPage
 ```
 
 ### 9.3 Metadata Pattern
@@ -615,7 +617,9 @@ export async function generateMetadata({ params }): Promise<Metadata> {
     title: `${data.title} | vivutruyenhay.com`,
     description: data.description?.substring(0, 160),
     openGraph: {
-      title, description, type: "article",
+      title,
+      description,
+      type: "article",
       locale: "vi_VN",
       images: [{ url: data.thumbnailUrl }],
     },
@@ -674,11 +678,11 @@ location /uploads/ {
 
 ### 10.4 Media Controller Endpoints
 
-| Endpoint | Method | Mô tả |
-|----------|--------|--------|
-| `/media/upload` | POST | Upload file (image/audio) |
-| `/media` | GET | List files với pagination, filter by type |
-| `/media/:id` | DELETE | Delete file từ disk + DB |
+| Endpoint        | Method | Mô tả                                     |
+| --------------- | ------ | ----------------------------------------- |
+| `/media/upload` | POST   | Upload file (image/audio)                 |
+| `/media`        | GET    | List files với pagination, filter by type |
+| `/media/:id`    | DELETE | Delete file từ disk + DB                  |
 
 ---
 
@@ -686,28 +690,28 @@ location /uploads/ {
 
 ### 11.1 Environment Variables
 
-| Variable | Mô tả | Ví dụ |
-|----------|--------|-------|
-| `DATABASE_URL` | PostgreSQL connection | `postgresql://user:pass@postgres:5432/db` |
-| `JWT_SECRET` | Sign access token | `openssl rand -base64 48` |
-| `JWT_REFRESH_SECRET` | Sign refresh token | `openssl rand -base64 48` |
-| `NEXT_PUBLIC_API_URL` | Frontend gọi API (baked vào build) | `https://domain.com/api` |
-| `API_URL` | Server-side API (Docker internal) | `http://backend:5000/api` |
-| `CORS_ORIGIN` | Allowed origins | `https://domain.com` |
-| `UPLOAD_PATH` | Thư mục upload | `/uploads` |
-| `DOMAIN` | Domain name | `vivutruyenhay.com` |
+| Variable              | Mô tả                              | Ví dụ                                     |
+| --------------------- | ---------------------------------- | ----------------------------------------- |
+| `DATABASE_URL`        | PostgreSQL connection              | `postgresql://user:pass@postgres:5432/db` |
+| `JWT_SECRET`          | Sign access token                  | `openssl rand -base64 48`                 |
+| `JWT_REFRESH_SECRET`  | Sign refresh token                 | `openssl rand -base64 48`                 |
+| `NEXT_PUBLIC_API_URL` | Frontend gọi API (baked vào build) | `https://domain.com/api`                  |
+| `API_URL`             | Server-side API (Docker internal)  | `http://backend:5000/api`                 |
+| `CORS_ORIGIN`         | Allowed origins                    | `https://domain.com`                      |
+| `UPLOAD_PATH`         | Thư mục upload                     | `/uploads`                                |
+| `DOMAIN`              | Domain name                        | `vivutruyenhay.com`                       |
 
 ### 11.2 Docker Compose Volumes
 
 ```yaml
 # Production volumes
 volumes:
-  - postgres_data:/var/lib/postgresql/data    # DB persistence
-  - ./uploads:/uploads                         # Media files
-  - ./logs/backend:/app/logs                   # Backend logs
-  - ./logs/nginx:/var/log/nginx                # Nginx logs
-  - ./nginx/prod.conf:/etc/nginx/nginx.conf    # Nginx config
-  - ./certbot/conf:/etc/letsencrypt            # SSL certs
+  - postgres_data:/var/lib/postgresql/data # DB persistence
+  - ./uploads:/uploads # Media files
+  - ./logs/backend:/app/logs # Backend logs
+  - ./logs/nginx:/var/log/nginx # Nginx logs
+  - ./nginx/prod.conf:/etc/nginx/nginx.conf # Nginx config
+  - ./certbot/conf:/etc/letsencrypt # SSL certs
 ```
 
 ### 11.3 Build Commands
@@ -789,69 +793,76 @@ const { t } = useLanguage();
 
 ```typescript
 export type AdminTab =
-  | "dashboard"        // Thống kê tổng quan
-  | "stories"          // Quản lý truyện
-  | "chapters"         // Quản lý chương
-  | "genres"           // Quản lý thể loại
-  | "affiliate-links"  // Quản lý link liên kết
-  | "users"            // Quản lý người dùng
-  | "comments"         // Quản lý bình luận
-  | "media"            // Quản lý file upload
-  | "settings"         // Cài đặt hệ thống
-  | "film-reviews"     // Quản lý review phim
+  | "dashboard" // Thống kê tổng quan
+  | "stories" // Quản lý truyện
+  | "chapters" // Quản lý chương
+  | "genres" // Quản lý thể loại
+  | "affiliate-links" // Quản lý link liên kết
+  | "users" // Quản lý người dùng
+  | "comments" // Quản lý bình luận
+  | "media" // Quản lý file upload
+  | "settings" // Cài đặt hệ thống
+  | "film-reviews" // Quản lý review phim
   | "film-categories"; // Quản lý thể loại phim
 ```
 
 ### 13.2 Admin Components chính
 
-| Component | Chức năng |
-|-----------|-----------|
-| `AdminStats` | Dashboard với số liệu tổng quan |
-| `AdminStoryForm` | CRUD form cho Story |
-| `AdminChapterForm` | CRUD form cho Chapter |
-| `AdminMediaUpload` | Upload & manage files |
-| `MediaManager` | Full media library UI |
+| Component          | Chức năng                       |
+| ------------------ | ------------------------------- |
+| `AdminStats`       | Dashboard với số liệu tổng quan |
+| `AdminStoryForm`   | CRUD form cho Story             |
+| `AdminChapterForm` | CRUD form cho Chapter           |
+| `AdminMediaUpload` | Upload & manage files           |
+| `MediaManager`     | Full media library UI           |
 
 ---
 
 ## 14. Seed Scripts
 
-| Script | Lệnh | Mô tả |
-|--------|-------|--------|
-| `seed.js` | `node src/scripts/seed.js` | Full seed: users, genres, stories, chapters, comments, film data |
-| `seed-film-reviews.js` | `node src/scripts/seed-film-reviews.js` | Chỉ film reviews + categories + actors |
-| `seed-users-only.js` | `node src/scripts/seed-users-only.js` | Chỉ tạo admin + demo user |
+| Script                 | Lệnh                                    | Mô tả                                                            |
+| ---------------------- | --------------------------------------- | ---------------------------------------------------------------- |
+| `seed.js`              | `node src/scripts/seed.js`              | Full seed: users, genres, stories, chapters, comments, film data |
+| `seed-film-reviews.js` | `node src/scripts/seed-film-reviews.js` | Chỉ film reviews + categories + actors                           |
+| `seed-users-only.js`   | `node src/scripts/seed-users-only.js`   | Chỉ tạo admin + demo user                                        |
 
 **Default accounts sau seed:**
 
-| Role | Email | Password |
-|------|-------|----------|
+| Role  | Email                 | Password      |
+| ----- | --------------------- | ------------- |
 | Admin | `admin@webtruyen.com` | `admin123456` |
-| User | `user@example.com` | `user123456` |
+| User  | `user@example.com`    | `user123456`  |
 
 ---
 
 ## 15. Key Design Patterns
 
 ### 15.1 SSR-First với Client Hydration
+
 Mọi page content-facing đều SSR để SEO tốt, sau đó hydrate thành interactive client components.
 
 ### 15.2 Cookie-Based Refresh Token
+
 Refresh token trong httpOnly cookie → XSS-safe. Access token ngắn hạn trong memory (Redux) → không persist.
 
 ### 15.3 Slug-Based Routing
+
 Tất cả content entities (Story, Genre, FilmReview) đều có `slug` field để tạo SEO-friendly URLs.
 
 ### 15.4 Idempotent Seeding
+
 Seed scripts sử dụng `upsert` / `findFirst` → chạy nhiều lần không duplicate data.
 
 ### 15.5 Volume-Based Media Storage
+
 Upload files lưu trên Docker volume (`./uploads`) → persistent qua container restart, serve trực tiếp qua Nginx.
 
 ### 15.6 Multi-Stage Docker Build
+
 Dockerfiles có `deps` stage cho dev (hot reload) và `runner` stage cho prod (optimized build).
 
 ### 15.7 Axios Interceptor Auto-Refresh
+
 Response interceptor tự động gọi `/auth/refresh` khi nhận 401, rồi retry original request với token mới.
 
 ---
@@ -860,7 +871,7 @@ Response interceptor tự động gọi `/auth/refresh` khi nhận 401, rồi re
 
 ```
 1. User truy cập https://vivutruyenhay.com/stories/dau-pha-thuong-khung
-   
+
 2. Nginx nhận request → proxy đến Frontend :3000
 
 3. Next.js Server Component:
