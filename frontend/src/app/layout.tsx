@@ -7,25 +7,25 @@ import ThemeProvider from "@/components/layout/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vivutruyenhay.com";
-const siteName = "Vivu Truyện Hay";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://khotruyen.vn";
+const siteName = "Kho Truyện Hay";
 const siteDescription =
-  "Vivu Truyện Hay là website tổng hợp truyện audio, truyện đọc online và phim hay với nhiều thể loại hấp dẫn như truyện ma, truyện trinh thám, truyện ngôn tình, truyện đô thị và truyện tình cảm người lớn. Nội dung trên website được cập nhật liên tục mỗi ngày giúp người nghe và người đọc có thể dễ dàng tìm thấy những câu chuyện hấp dẫn. Kho truyện audio tại Vivu Truyện Hay bao gồm hàng nghìn truyện mp3 với nhiều thể loại như truyện ma, truyện trinh thám, truyện ngôn tình, truyện đô thị, truyện kiếm hiệp và truyện tiên hiệp. Người dùng có thể nghe truyện online miễn phí với chất lượng âm thanh tốt và nội dung được chọn lọc.";
+  "Kho Truyện Hay là website tổng hợp truyện audio, truyện đọc online và phim hay với nhiều thể loại hấp dẫn như truyện ma, truyện trinh thám, truyện ngôn tình, truyện đô thị và truyện tình cảm người lớn. Nội dung trên website được cập nhật liên tục mỗi ngày giúp người nghe và người đọc có thể dễ dàng tìm thấy những câu chuyện hấp dẫn. Kho truyện audio tại Kho Truyện Hay bao gồm hàng nghìn truyện mp3 với nhiều thể loại như truyện ma, truyện trinh thám, truyện ngôn tình, truyện đô thị, truyện kiếm hiệp và truyện tiên hiệp. Người dùng có thể nghe truyện online miễn phí với chất lượng âm thanh tốt và nội dung được chọn lọc.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Vivu Truyện Hay – Nghe Truyện Audio, Đọc Truyện Online Và Xem Phim Hay Mỗi Ngày",
-    template: "%s | Vivu Truyện Hay",
+    default: "Kho Truyện Hay – Nghe Truyện Audio, Đọc Truyện Online Và Xem Phim Hay Mỗi Ngày",
+    template: "%s | Kho Truyện Hay",
   },
   description: siteDescription,
   keywords: [
-    "vivutruyenhay",
-    "vivutruyenhay.com",
-    "vivu truyện hay",
+    "khotruyen",
+    "khotruyen.vn",
+    "Kho truyện hay",
     "vi vu truyện hay",
-    "vivu truyen hay",
-    "web vivu truyện hay",
+    "Kho truyen hay",
+    "web Kho truyện hay",
     "nghe truyện audio",
     "nghe truyện audio hay",
     "truyện audio hay nhất",
@@ -102,23 +102,23 @@ export const metadata: Metadata = {
     locale: "vi_VN",
     url: siteUrl,
     siteName: siteName,
-    title: "Vivu Truyện Hay – Nghe Truyện Audio, Đọc Truyện Online Và Xem Phim Hay Mỗi Ngày",
+    title: "Kho Truyện Hay – Nghe Truyện Audio, Đọc Truyện Online Và Xem Phim Hay Mỗi Ngày",
     description: siteDescription,
     images: [
       {
-        url: "/vivutruyenhay_logo.jpg",
+        url: "/khotruyen_logo.png",
         width: 1200,
         height: 630,
-        alt: "Vivu Truyện Hay – Kho truyện audio, truyện chữ và review phim",
+        alt: "Kho Truyện Hay – Kho truyện audio, truyện chữ và review phim",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vivu Truyện Hay – Nghe Truyện Audio, Đọc Truyện Online Và Xem Phim Hay",
+    title: "Kho Truyện Hay – Nghe Truyện Audio, Đọc Truyện Online Và Xem Phim Hay",
     description: siteDescription,
-    images: ["/vivutruyenhay_logo.jpg"],
+    images: ["/khotruyen_logo.png"],
     creator: "@Evanloi9x",
   },
   robots: {
@@ -134,9 +134,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/vivutruyenhay_logo.jpg", type: "image/jpeg" },
+      { url: "/khotruyen_logo.png", type: "image/jpeg" },
     ],
-    apple: [{ url: "/vivutruyenhay_logo.jpg", type: "image/jpeg" }],
+    apple: [{ url: "/khotruyen_logo.png", type: "image/jpeg" }],
   },
   manifest: "/manifest.json",
   alternates: {
@@ -162,9 +162,9 @@ export default function RootLayout({
         <meta name="theme-color" content="#1e40af" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="vivutruyenhay.com" />
+        <meta name="apple-mobile-web-app-title" content="khotruyen.vn" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="application-name" content="vivutruyenhay.com" />
+        <meta name="application-name" content="khotruyen.vn" />
         <link rel="author" href={`${siteUrl}/humans.txt`} />
         {/* Inline script to force dark theme before React hydration */}
         <script

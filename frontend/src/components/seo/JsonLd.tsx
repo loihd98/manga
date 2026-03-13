@@ -16,7 +16,7 @@ export function getOrganizationSchema(siteUrl: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "vivutruyenhay.com",
+    name: "khotruyen.vn",
     url: siteUrl,
     logo: `${siteUrl}/logo.svg`,
     description:
@@ -44,13 +44,13 @@ export function getWebsiteSchema(siteUrl: string) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "vivutruyenhay.com",
+    name: "khotruyen.vn",
     url: siteUrl,
     description:
       "Kho truyện online miễn phí - Đọc và nghe truyện mọi lúc mọi nơi",
     publisher: {
       "@type": "Organization",
-      name: "vivutruyenhay.com",
+      name: "khotruyen.vn",
       logo: {
         "@type": "ImageObject",
         url: `${siteUrl}/logo.svg`,
@@ -76,14 +76,14 @@ export function getBookSchema(story: any, siteUrl: string) {
     name: story.title,
     description: story.description,
     url: `${siteUrl}/stories/${story.slug}`,
-    image: story.coverImage || `${siteUrl}/vivutruyenhay_logo.jpg`,
+    image: story.coverImage || `${siteUrl}/khotruyen_logo.png`,
     author: {
       "@type": "Person",
       name: story.author || "Anonymous",
     },
     publisher: {
       "@type": "Organization",
-      name: "vivutruyenhay.com",
+      name: "khotruyen.vn",
     },
     datePublished: story.createdAt,
     dateModified: story.updatedAt,
@@ -109,17 +109,17 @@ export function getArticleSchema(chapter: any, story: any, siteUrl: string) {
     headline: chapter.title,
     description: story.description,
     url: `${siteUrl}/stories/${story.slug}/${chapter.slug}`,
-    image: story.coverImage || `${siteUrl}/vivutruyenhay_logo.jpg`,
+    image: story.coverImage || `${siteUrl}/khotruyen_logo.png`,
     author: {
       "@type": "Person",
       name: story.author || "Anonymous",
     },
     publisher: {
       "@type": "Organization",
-      name: "vivutruyenhay.com",
+      name: "khotruyen.vn",
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/vivutruyenhay_logo.jpg`,
+        url: `${siteUrl}/khotruyen_logo.png`,
       },
     },
     datePublished: chapter.createdAt,
@@ -145,7 +145,7 @@ export function getAudioBookSchema(story: any, siteUrl: string) {
     name: story.title,
     description: story.description,
     url: `${siteUrl}/stories/${story.slug}`,
-    thumbnail: story.coverImage || `${siteUrl}/vivutruyenhay_logo.jpg`,
+    thumbnail: story.coverImage || `${siteUrl}/khotruyen_logo.png`,
     contentUrl: story.audioUrl,
     encodingFormat: "audio/mpeg",
     author: {
@@ -154,7 +154,7 @@ export function getAudioBookSchema(story: any, siteUrl: string) {
     },
     publisher: {
       "@type": "Organization",
-      name: "vivutruyenhay.com",
+      name: "khotruyen.vn",
     },
     datePublished: story.createdAt,
     inLanguage: "vi-VN",
@@ -190,11 +190,11 @@ export function getFilmReviewSchema(review: any, siteUrl: string) {
     dateModified: review.updatedAt,
     author: {
       "@type": "Person",
-      name: review.author?.name || "vivutruyenhay.com",
+      name: review.author?.name || "khotruyen.vn",
     },
     publisher: {
       "@type": "Organization",
-      name: "vivutruyenhay.com",
+      name: "khotruyen.vn",
       url: siteUrl,
     },
     reviewRating: review.rating
@@ -208,7 +208,7 @@ export function getFilmReviewSchema(review: any, siteUrl: string) {
     itemReviewed: {
       "@type": "Movie",
       name: review.title,
-      image: review.thumbnailUrl || `${siteUrl}/vivutruyenhay_logo.jpg`,
+      image: review.thumbnailUrl || `${siteUrl}/khotruyen_logo.png`,
       genre: review.categories?.map((c: any) => c.name) || [],
       actor: review.actors?.map((a: any) => ({
         "@type": "Person",
@@ -224,13 +224,13 @@ export function getFilmReviewsListSchema(siteUrl: string) {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Review Phim - vivutruyenhay.com",
+    name: "Review Phim - khotruyen.vn",
     description:
       "Xem các bài review phim hay nhất. Đánh giá phim, xếp hạng và nhận xét từ cộng đồng.",
     url: `${siteUrl}/film-reviews`,
     publisher: {
       "@type": "Organization",
-      name: "vivutruyenhay.com",
+      name: "khotruyen.vn",
       url: siteUrl,
     },
     inLanguage: "vi-VN",

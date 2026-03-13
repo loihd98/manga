@@ -28,15 +28,15 @@ export async function generateMetadata({
 
   if (!story) {
     return {
-      title: "Truyện không tồn tại – Vivu Truyện Hay",
+      title: "Truyện không tồn tại – Kho Truyện Hay",
       description: "Truyện bạn tìm kiếm không tồn tại hoặc đã bị xóa.",
     };
   }
 
-  const title = `${story.title} – Đọc Truyện Online | Vivu Truyện Hay`;
+  const title = `${story.title} – Đọc Truyện Online | Kho Truyện Hay`;
   const description =
     story.description?.substring(0, 160) ||
-    `Đọc ${story.title} – Truyện Chữ miễn phí tại Vivu Truyện Hay. ${story.chapters?.length || 0} chương.`;
+    `Đọc ${story.title} – Truyện Chữ miễn phí tại Kho Truyện Hay. ${story.chapters?.length || 0} chương.`;
 
   return {
     title,
@@ -46,20 +46,20 @@ export async function generateMetadata({
       "truyện chữ",
       "đọc truyện",
       ...(story.genres?.map((g: any) => g.name) || []),
-      "vivutruyenhay",
+      "khotruyen",
     ],
     openGraph: {
       title,
       description,
       type: "article",
       locale: "vi_VN",
-      siteName: "Vivu Truyện Hay",
+      siteName: "Kho Truyện Hay",
       ...(story.thumbnailUrl && {
         images: [
           {
             url: story.thumbnailUrl.startsWith("http")
               ? story.thumbnailUrl
-              : `${process.env.NEXT_PUBLIC_SITE_URL || "https://vivutruyenhay.com"}${story.thumbnailUrl}`,
+              : `${process.env.NEXT_PUBLIC_SITE_URL || "https://khotruyen.vn"}${story.thumbnailUrl}`,
             width: 1200,
             height: 630,
             alt: story.title,

@@ -1,7 +1,7 @@
 {
-  "name": "vivutruyenhay.com",
-  "short_name": "VivuTruyen",
-  "description": "Vivu Truyện Hay là website tổng hợp truyện audio, truyện đọc online và phim hay với nhiều thể loại hấp dẫn. Nghe truyện audio miễn phí, đọc truyện online và xem phim hay mỗi ngày.",
+  "name": "khotruyen.vn",
+  "short_name": "KhoTruyen",
+  "description": "Kho Truyện Hay là website tổng hợp truyện audio, truyện đọc online và phim hay với nhiều thể loại hấp dẫn. Nghe truyện audio miễn phí, đọc truyện online và xem phim hay mỗi ngày.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#111827",
@@ -13,13 +13,13 @@
   "dir": "ltr",
   "icons": [
     {
-      "src": "/vivutruyenhay_logo.jpg",
+      "src": "/khotruyen_logo.png",
       "sizes": "192x192",
       "type": "image/jpeg",
       "purpose": "any"
     },
     {
-      "src": "/vivutruyenhay_logo.jpg",
+      "src": "/khotruyen_logo.png",
       "sizes": "512x512",
       "type": "image/jpeg",
       "purpose": "any maskable"
@@ -27,7 +27,7 @@
   ],
   "screenshots": [
     {
-      "src": "/vivutruyenhay_logo.jpg",
+      "src": "/khotruyen_logo.png",
       "sizes": "1200x630",
       "type": "image/jpeg",
       "form_factor": "wide"
@@ -41,7 +41,7 @@
       "url": "/truyen_text",
       "icons": [
         {
-          "src": "/vivutruyenhay_logo.jpg",
+          "src": "/khotruyen_logo.png",
           "sizes": "96x96",
           "type": "image/jpeg"
         }
@@ -54,7 +54,7 @@
       "url": "/truyen_audio",
       "icons": [
         {
-          "src": "/vivutruyenhay_logo.jpg",
+          "src": "/khotruyen_logo.png",
           "sizes": "96x96",
           "type": "image/jpeg"
         }
@@ -67,7 +67,7 @@
       "url": "/bookmarks",
       "icons": [
         {
-          "src": "/vivutruyenhay_logo.jpg",
+          "src": "/khotruyen_logo.png",
           "sizes": "96x96",
           "type": "image/jpeg"
         }

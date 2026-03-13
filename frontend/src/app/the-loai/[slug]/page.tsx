@@ -55,9 +55,9 @@ export async function generateMetadata({
 
   return {
     title: `Thể loại ${genreName} – Đọc truyện ${genreName} online miễn phí`,
-    description: `Khám phá kho truyện thể loại ${genreName} hay nhất. Đọc truyện chữ và nghe truyện audio ${genreName} miễn phí tại Vivu Truyện Hay.`,
+    description: `Khám phá kho truyện thể loại ${genreName} hay nhất. Đọc truyện chữ và nghe truyện audio ${genreName} miễn phí tại Kho Truyện Hay.`,
     openGraph: {
-      title: `Thể loại ${genreName} – Vivu Truyện Hay`,
+      title: `Thể loại ${genreName} – Kho Truyện Hay`,
       description: `Kho truyện ${genreName} hay nhất, cập nhật liên tục.`,
       type: "website",
       locale: "vi_VN",

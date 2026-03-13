@@ -367,7 +367,7 @@ export default function StoryDetailClient({ params, initialStory }: StoryPagePro
                     >
                       <p className=" font-bold items-center flex-wrap text-center">
                         <span className="text-2xl animate-bounce">🔥</span>
-                        <span className="text-orange-600 dark:text-orange-400 animate-pulse"> Cảm ơn bạn đã ghé thăm Vivu Truyện Hay
+                        <span className="text-orange-600 dark:text-orange-400 animate-pulse"> Cảm ơn bạn đã ghé thăm Kho Truyện Hay
                           Nếu bạn thấy những câu chuyện ở đây thú vị, hãy bấm vào đây để ủng hộ tụi mình nhé. Mỗi lượt click của bạn là một nguồn động lực lớn để website tiếp tục chia sẻ thêm nhiều truyện hay mỗi ngày!</span>
                         <a href={story.affiliate.targetUrl}
                           target="_blank"

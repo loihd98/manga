@@ -75,8 +75,8 @@ const Navbar: React.FC = () => {
             >
               <div className="hidden md:flex items-center text-lg font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
                 <Image
-                  src="/vivutruyenhay_logo.jpg"
-                  alt="Vivu Truyện Hay"
+                  src="/khotruyen_logo.png"
+                  alt="Kho Truyện Hay"
                   width={36}
                   height={36}
                   className="rounded-lg mr-2"
@@ -166,14 +166,14 @@ const Navbar: React.FC = () => {
           >
             <div className="flex sm:hidden items-center text-lg font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
               <Image
-                src="/vivutruyenhay_logo.jpg"
-                alt="Vivu Truyện Hay"
+                src="/khotruyen_logo.png"
+                alt="Kho Truyện Hay"
                 width={32}
                 height={32}
                 className="rounded-lg mr-2"
                 priority
               />
-              vivutruyenhay.com
+              khotruyen.vn
             </div>
           </Link>
 

@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center">
               <div className="text-xl font-bold text-blue-600 dark:text-blue-400">
-                📚 Vivu Truyện Hay
+                📚 Kho Truyện Hay
               </div>
             </div>
             <div className="mt-4 flex gap-4 items-start">
@@ -197,7 +197,7 @@ const Footer: React.FC = () => {
         <div className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-base text-gray-400 dark:text-gray-500">
-              &copy; {new Date().getFullYear()} Vivu Truyện Hay (vivutruyenhay.com). Tất cả quyền được bảo lưu.
+              &copy; {new Date().getFullYear()} Kho Truyện Hay (khotruyen.vn). Tất cả quyền được bảo lưu.
             </p>
             <div className="mt-4 md:mt-0 flex space-x-6">
               <Link

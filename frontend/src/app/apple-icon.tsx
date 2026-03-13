@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 export const runtime = "nodejs";
-export const alt = "Vivu Truyện Hay";
+export const alt = "Kho Truyện Hay";
 export const size = {
   width: 180,
   height: 180,
@@ -11,7 +11,7 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Icon() {
-  const logoData = await readFile(join(process.cwd(), "public", "vivutruyenhay_logo.jpg"));
+  const logoData = await readFile(join(process.cwd(), "public", "khotruyen_logo.png"));
   const logoBase64 = `data:image/jpeg;base64,${logoData.toString("base64")}`;
 
   return new ImageResponse(

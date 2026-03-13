@@ -1,4 +1,4 @@
-# vivutruyenhay.com
+# khotruyen.vn
 
 A full-stack web application for reading stories, listening to audio stories, and reviewing films. Built with **Next.js 14**, **Node.js/Express**, **PostgreSQL**, and **Docker**.
 
@@ -7,6 +7,7 @@ A full-stack web application for reading stories, listening to audio stories, an
 ## Features
 
 **User-facing:**
+
 - Story reading with clean, responsive interface
 - Audio story playback with built-in player
 - Film review browsing and commenting
@@ -14,6 +15,7 @@ A full-stack web application for reading stories, listening to audio stories, an
 - Bookmarks, comments, dark/light theme
 
 **Admin:**
+
 - Dashboard with analytics
 - Story, chapter, and genre management
 - Film review and category management
@@ -24,12 +26,12 @@ A full-stack web application for reading stories, listening to audio stories, an
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
+| Layer    | Technology                                                       |
+| -------- | ---------------------------------------------------------------- |
 | Frontend | Next.js 14 (App Router), TypeScript, Tailwind CSS, Redux Toolkit |
-| Backend | Node.js, Express, Prisma ORM |
-| Database | PostgreSQL 15 |
-| Infra | Docker, Nginx, Let's Encrypt SSL |
+| Backend  | Node.js, Express, Prisma ORM                                     |
+| Database | PostgreSQL 15                                                    |
+| Infra    | Docker, Nginx, Let's Encrypt SSL                                 |
 
 ---
 
@@ -78,8 +80,8 @@ webtruyen/
 ### Setup
 
 ```bash
-git clone https://github.com/loihd98/vivutruyenhay.git
-cd vivutruyenhay
+git clone https://github.com/loihd98/khotruyen.git
+cd khotruyen
 
 # Create environment file
 cp .env.dev.example .env.dev
@@ -93,11 +95,11 @@ docker compose -f docker-compose.dev.yml exec backend node src/scripts/seed.js
 
 ### Access
 
-| Service | URL |
-|---------|-----|
-| Website | http://localhost |
-| API | http://localhost/api |
-| API direct | http://localhost:5000 |
+| Service         | URL                   |
+| --------------- | --------------------- |
+| Website         | http://localhost      |
+| API             | http://localhost/api  |
+| API direct      | http://localhost:5000 |
 | Frontend direct | http://localhost:3000 |
 
 ### Architecture (Development)
@@ -137,64 +139,64 @@ docker compose -f docker-compose.prod.yml up -d --build
 
 ### Authentication
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register` | Register new user |
-| POST | `/api/auth/login` | Login |
-| POST | `/api/auth/refresh` | Refresh access token |
-| GET | `/api/auth/google` | Google OAuth login |
-| GET | `/api/auth/facebook` | Facebook OAuth login |
+| Method | Endpoint             | Description          |
+| ------ | -------------------- | -------------------- |
+| POST   | `/api/auth/register` | Register new user    |
+| POST   | `/api/auth/login`    | Login                |
+| POST   | `/api/auth/refresh`  | Refresh access token |
+| GET    | `/api/auth/google`   | Google OAuth login   |
+| GET    | `/api/auth/facebook` | Facebook OAuth login |
 
 ### Stories
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/stories` | List stories (paginated, filterable) |
-| GET | `/api/stories/:slug` | Get story details |
-| POST | `/api/stories` | Create story (admin) |
-| PUT | `/api/stories/:id` | Update story (admin) |
-| DELETE | `/api/stories/:id` | Delete story (admin) |
+| Method | Endpoint             | Description                          |
+| ------ | -------------------- | ------------------------------------ |
+| GET    | `/api/stories`       | List stories (paginated, filterable) |
+| GET    | `/api/stories/:slug` | Get story details                    |
+| POST   | `/api/stories`       | Create story (admin)                 |
+| PUT    | `/api/stories/:id`   | Update story (admin)                 |
+| DELETE | `/api/stories/:id`   | Delete story (admin)                 |
 
 ### Chapters
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/chapters/:id` | Get chapter content |
-| POST | `/api/chapters` | Create chapter (admin) |
-| PUT | `/api/chapters/:id` | Update chapter (admin) |
+| Method | Endpoint            | Description            |
+| ------ | ------------------- | ---------------------- |
+| GET    | `/api/chapters/:id` | Get chapter content    |
+| POST   | `/api/chapters`     | Create chapter (admin) |
+| PUT    | `/api/chapters/:id` | Update chapter (admin) |
 
 ### Comments
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/comments/chapters/:chapterId/comments` | Get comments |
-| POST | `/api/comments/chapters/:chapterId/comments` | Create comment |
-| DELETE | `/api/comments/:id` | Delete comment |
+| Method | Endpoint                                     | Description    |
+| ------ | -------------------------------------------- | -------------- |
+| GET    | `/api/comments/chapters/:chapterId/comments` | Get comments   |
+| POST   | `/api/comments/chapters/:chapterId/comments` | Create comment |
+| DELETE | `/api/comments/:id`                          | Delete comment |
 
 ### Film Reviews
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/film-reviews` | List film reviews |
-| GET | `/api/film-reviews/:slug` | Get review details |
-| POST | `/api/film-reviews` | Create review (admin) |
+| Method | Endpoint                  | Description           |
+| ------ | ------------------------- | --------------------- |
+| GET    | `/api/film-reviews`       | List film reviews     |
+| GET    | `/api/film-reviews/:slug` | Get review details    |
+| POST   | `/api/film-reviews`       | Create review (admin) |
 
 ### Admin
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/admin/dashboard/stats` | Dashboard statistics |
-| GET | `/api/admin/users` | User management |
-| GET | `/api/admin/comments` | Comment moderation |
+| Method | Endpoint                     | Description          |
+| ------ | ---------------------------- | -------------------- |
+| GET    | `/api/admin/dashboard/stats` | Dashboard statistics |
+| GET    | `/api/admin/users`           | User management      |
+| GET    | `/api/admin/comments`        | Comment moderation   |
 
 ### Other
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/health` | Health check |
-| POST | `/api/contact` | Contact form |
-| GET | `/api/bookmarks` | User bookmarks |
-| GET | `/api/media` | Media management |
+| Method | Endpoint         | Description      |
+| ------ | ---------------- | ---------------- |
+| GET    | `/api/health`    | Health check     |
+| POST   | `/api/contact`   | Contact form     |
+| GET    | `/api/bookmarks` | User bookmarks   |
+| GET    | `/api/media`     | Media management |
 
 ---
 
@@ -204,14 +206,14 @@ docker compose -f docker-compose.prod.yml up -d --build
 
 See `.env.prod.example` for the full template. Key variables:
 
-| Variable | Description |
-|----------|-------------|
-| `DATABASE_URL` | PostgreSQL connection string |
-| `JWT_SECRET` | JWT signing secret (generate with `openssl rand -base64 48`) |
-| `JWT_REFRESH_SECRET` | Refresh token secret |
-| `NEXT_PUBLIC_API_URL` | Frontend API URL (baked into build) |
-| `API_URL` | Server-side API URL (Docker internal) |
-| `DOMAIN` | Domain name |
+| Variable              | Description                                                  |
+| --------------------- | ------------------------------------------------------------ |
+| `DATABASE_URL`        | PostgreSQL connection string                                 |
+| `JWT_SECRET`          | JWT signing secret (generate with `openssl rand -base64 48`) |
+| `JWT_REFRESH_SECRET`  | Refresh token secret                                         |
+| `NEXT_PUBLIC_API_URL` | Frontend API URL (baked into build)                          |
+| `API_URL`             | Server-side API URL (Docker internal)                        |
+| `DOMAIN`              | Domain name                                                  |
 
 ### Development (`.env.dev`)
 
@@ -233,7 +235,7 @@ The project includes built-in SEO optimization:
 ### SEO Checklist for Production
 
 - [ ] Register on [Google Search Console](https://search.google.com/search-console)
-- [ ] Submit sitemap URL: `https://vivutruyenhay.com/sitemap.xml`
+- [ ] Submit sitemap URL: `https://khotruyen.vn/sitemap.xml`
 - [ ] Add Google verification code to `layout.tsx`
 - [ ] (Optional) Set up Google Analytics
 - [ ] (Optional) Create Facebook App for social login & OG debugging
@@ -244,20 +246,20 @@ The project includes built-in SEO optimization:
 
 ### Schema Overview
 
-| Model | Description |
-|-------|-------------|
-| User | Users with roles (USER/ADMIN), OAuth support |
-| Story | Stories with types (TEXT/AUDIO), genres, status |
-| Chapter | Story chapters with text content or audio URL |
-| Comment | Threaded comments on chapters |
-| Bookmark | User bookmarks for stories/chapters |
-| FilmReview | Film reviews with categories, actors, ratings |
-| FilmComment | Comments on film reviews |
-| Genre | Story genres |
-| FilmCategory | Film categories |
-| FilmActor | Film actors |
-| AffiliateLink | Affiliate links for stories/reviews |
-| Media | Uploaded media files |
+| Model         | Description                                     |
+| ------------- | ----------------------------------------------- |
+| User          | Users with roles (USER/ADMIN), OAuth support    |
+| Story         | Stories with types (TEXT/AUDIO), genres, status |
+| Chapter       | Story chapters with text content or audio URL   |
+| Comment       | Threaded comments on chapters                   |
+| Bookmark      | User bookmarks for stories/chapters             |
+| FilmReview    | Film reviews with categories, actors, ratings   |
+| FilmComment   | Comments on film reviews                        |
+| Genre         | Story genres                                    |
+| FilmCategory  | Film categories                                 |
+| FilmActor     | Film actors                                     |
+| AffiliateLink | Affiliate links for stories/reviews             |
+| Media         | Uploaded media files                            |
 
 ### Useful Commands
 
@@ -301,7 +303,7 @@ Managed via Let's Encrypt (Certbot) with automatic renewal.
 ```bash
 # Check certificate expiry
 docker run --rm -v webtruyen_certbot-certs:/certs alpine/openssl x509 \
-  -in /certs/live/vivutruyenhay.com/fullchain.pem -noout -dates
+  -in /certs/live/khotruyen.vn/fullchain.pem -noout -dates
 
 # Force renewal
 docker compose -f docker-compose.prod.yml run --rm certbot renew --force-renewal

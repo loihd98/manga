@@ -10,10 +10,10 @@ const Hero: React.FC = () => {
       <div className="hidden sm:block bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="container mx-auto px-4 py-16 text-center">
           <h1 className="text-5xl font-bold mb-6">
-            Vivu Truyện Hay – Nghe Truyện Audio, Đọc Truyện Online Và Xem Phim Hay Mỗi Ngày
+            Kho Truyện Hay – Nghe Truyện Audio, Đọc Truyện Online Và Xem Phim Hay Mỗi Ngày
           </h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Vivu Truyện Hay là website tổng hợp truyện audio, truyện đọc online và phim hay với nhiều thể loại hấp dẫn như truyện ma, truyện trinh thám, truyện ngôn tình, truyện đô thị và truyện tình cảm người lớn. Nghe truyện audio chất lượng cao miễn phí tại vivutruyenhay.com
+            Kho Truyện Hay là website tổng hợp truyện audio, truyện đọc online và phim hay với nhiều thể loại hấp dẫn như truyện ma, truyện trinh thám, truyện ngôn tình, truyện đô thị và truyện tình cảm người lớn. Nghe truyện audio chất lượng cao miễn phí tại khotruyen.vn
           </p>
           <div className="flex flex-row gap-4 justify-center">
             <Link
