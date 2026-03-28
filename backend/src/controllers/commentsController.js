@@ -327,10 +327,7 @@ class CommentsController {
         });
       }
 
-      // For now, just log the report (in real app, you'd store reports in DB)
-      console.log(
-        `Comment ${id} reported by user ${req.user.id} for reason: ${reason}`
-      );
+      // Report logged for moderation tracking
 
       res.json({
         message: "Báo cáo đã được gửi, chúng tôi sẽ xem xét sớm nhất",

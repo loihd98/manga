@@ -170,7 +170,6 @@ const ThemedGenreSections: React.FC<ThemedGenreSectionsProps> = ({ initialSectio
       {THEMED_SECTIONS.map((section: any) => {
         const key = `${section.type}-${section.genre || section.category}`;
         const stories = sectionData[key] || [];
-        console.log(JSON.stringify(sectionData[key]));
         const isLoading = loading[key];
 
         // Don't render section if no data and not loading

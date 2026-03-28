@@ -89,7 +89,6 @@ const AdminStoryManager: React.FC<{ storyType?: "TEXT" | "AUDIO" }> = ({ storyTy
       }
 
       const response = await apiClient.get(`/admin/stories?${params}`);
-      console.log(response.data?.data, "Fetched admin stories data");
 
       setStories(response.data.data?.stories || []);
       setPagination(response.data?.data.pagination);
@@ -117,8 +116,6 @@ const AdminStoryManager: React.FC<{ storyType?: "TEXT" | "AUDIO" }> = ({ storyTy
       try {
         await apiClient.delete(`/admin/stories/${storyId}`);
         setStories((prev) => prev.filter((story) => story.id !== storyId));
-        // Show success message (you can add toast notification here)
-        console.log("Story deleted successfully");
       } catch (error) {
         console.error("Error deleting story:", error);
         // Show error message (you can add toast notification here)

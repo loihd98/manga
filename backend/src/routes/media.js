@@ -56,9 +56,9 @@ router.delete("/files/:filename", requireMediaPermission("media.delete"), MediaC
 router.use((error, req, res, next) => {
   if (error instanceof multer.MulterError) {
     if (error.code === "LIMIT_FILE_SIZE") {
-      return res.status(400).json({
-        error: "File Too Large",
-        message: "File quá lớn, vui lòng chọn file nhỏ hơn",
+      return res.status(413).json({
+        error: "Payload Too Large",
+        message: "File quá lớn. ᐐm thanh tối đa 500MB, hình ảnh tối đa 100MB.",
       });
     }
   }

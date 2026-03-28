@@ -15,7 +15,6 @@ function getApiUrl() {
 async function fetchHomepageData() {
   try {
     const API_URL = getApiUrl();
-    console.log("[Homepage] Fetching data from API_URL:", API_URL);
     const [
       filmReviewsRes,
       textStoriesRes,

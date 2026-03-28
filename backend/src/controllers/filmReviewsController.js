@@ -12,7 +12,6 @@ function deleteOldMediaFile(oldUrl, newUrl) {
     const filePath = path.join(config.uploadPath, match[1], match[2]);
     if (fs.existsSync(filePath)) {
       fs.unlinkSync(filePath);
-      console.log(`Deleted old media file: ${filePath}`);
     }
   } catch (err) {
     console.error("Error deleting old media file:", err.message);

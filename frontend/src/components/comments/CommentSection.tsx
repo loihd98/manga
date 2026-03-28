@@ -36,11 +36,9 @@ const CommentSection: React.FC<CommentSectionProps> = ({
       setError(null);
 
       const response = await commentsAPI.getComments(chapterId, pageNum);
-      console.log("Comments API response:", response);
 
       if (response && response.data) {
         const { comments: newComments, pagination } = response.data;
-        console.log("Parsed comments:", newComments, "Pagination:", pagination);
 
         if (append) {
           setComments((prev) => [...prev, ...newComments]);
@@ -106,8 +104,6 @@ const CommentSection: React.FC<CommentSectionProps> = ({
 
   // Reset state and load comments when chapter changes
   useEffect(() => {
-    console.log("Chapter changed to:", chapterId);
-
     // Reset all state when chapterId changes
     setComments([]);
     setPage(1);

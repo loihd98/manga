@@ -99,7 +99,6 @@ const MediaManager: React.FC = () => {
           params: { type: file?.type },
         });
         setFiles((prev) => prev.filter((f) => f.name !== file?.name));
-        console.log("File deleted successfully");
       } catch (error) {
         console.error("Error deleting file:", error);
         alert(t("admin.media.delete_error"));
@@ -112,21 +111,19 @@ const MediaManager: React.FC = () => {
 
     setIsUploading(true);
     try {
-      const formData = new FormData();
-      Array.from(uploadFiles).forEach((file) => {
-        formData.append("files", file);
-      });
-
-      await apiClient.post("/admin/media/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      for (const file of Array.from(uploadFiles)) {
+        const formData = new FormData();
+        formData.append("image", file);
+        await apiClient.post("/admin/media/upload", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      }
 
       setShowUploadModal(false);
       setUploadFiles(null);
       fetchFiles(); // Refresh the file list
-      console.log("Files uploaded successfully");
     } catch (error) {
       console.error("Error uploading files:", error);
       alert(t("admin.media.upload_error1"));

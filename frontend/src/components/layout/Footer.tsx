@@ -200,24 +200,12 @@ const Footer: React.FC = () => {
               &copy; {new Date().getFullYear()} Kho Truyện Hay (khotruyen.vn). Tất cả quyền được bảo lưu.
             </p>
             <div className="mt-4 md:mt-0 flex space-x-6">
-              <Link
-                href="/sitemap"
+              <a
+                href="/sitemap.xml"
                 className="text-sm text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
               >
                 Sitemap
-              </Link>
-              <Link
-                href="/rss"
-                className="text-sm text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
-              >
-                RSS
-              </Link>
-              <Link
-                href="/api-docs"
-                className="text-sm text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
-              >
-                API
-              </Link>
+              </a>
             </div>
           </div>
         </div>

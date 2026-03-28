@@ -177,8 +177,8 @@ const AdminChapterForm: React.FC<AdminChapterFormProps> = ({
       setError("Vui lòng nhập tiêu đề chương");
       return;
     }
-    if (!formData.content?.trim()) {
-      setError("Vui lòng nhập nội dung chương");
+    if (!formData.content?.trim() && !formData.audioUrl?.trim()) {
+      setError("Vui lòng nhập nội dung chương hoặc chọn file audio");
       return;
     }
     try {
@@ -440,7 +440,7 @@ const AdminChapterForm: React.FC<AdminChapterFormProps> = ({
       </div>
       <div>
         <label className="block text-sm font-medium mb-1 mt-4">
-          Nội dung *
+          Nội dung {!formData.audioUrl && "*"}
         </label>
         <textarea
           name="content"
@@ -448,7 +448,7 @@ const AdminChapterForm: React.FC<AdminChapterFormProps> = ({
           onChange={handleInputChange}
           rows={8}
           className="w-full px-3 py-2 border rounded-md bg-[#374151] focus:ring-2 focus:ring-blue-500"
-          required
+          placeholder={formData.audioUrl ? "(Tùy chọn cho chương audio)" : "Nhập nội dung chương..."}
         />
       </div>
       <div className="flex justify-end gap-4 mt-6">
