@@ -90,7 +90,7 @@ const audioUpload = multer({
   storage: audioStorage,
   fileFilter: audioFilter,
   limits: {
-    fileSize: 100 * 1024 * 1024, // 100MB for audio
+    fileSize: 1536 * 1024 * 1024, // 1.5GB for audio
   },
 });
 
@@ -98,7 +98,7 @@ const imageUpload = multer({
   storage: imageStorage,
   fileFilter: imageFilter,
   limits: {
-    fileSize: config.maxFileSize, // 100MB
+    fileSize: config.maxFileSize, // uses config (1.5GB)
   },
 });
 
@@ -156,7 +156,7 @@ const universalUpload = multer({
   storage: universalStorage,
   fileFilter: universalFilter,
   limits: {
-    fileSize: 100 * 1024 * 1024, // 100MB
+    fileSize: 1536 * 1024 * 1024, // 1.5GB
   },
 });
 
@@ -505,17 +505,6 @@ class MediaController {
         });
       }
 
-      // Check media usage before deleting
-      const mediaUsageService = require("../utils/mediaUsageService");
-      const usageCheck = await mediaUsageService.canDeleteMedia(id);
-      if (!usageCheck.canDelete) {
-        return res.status(409).json({
-          success: false,
-          message: usageCheck.message,
-          usages: usageCheck.usages,
-        });
-      }
-
       // Delete physical file
       const filePath = path.join(
         config.uploadPath || "./uploads",
@@ -592,36 +581,47 @@ class MediaController {
     }
   }
 
-  // GET /api/admin/media/usages - Get usage info for all media files
+  // GET /api/media/usages - Get usageMap: { [filename]: [{type, title, slug}] }
+  // Builds map by directly querying stories/chapters/filmReviews for all URL references.
   async getFileUsages(req, res) {
     try {
-      // Find all stories and their thumbnail/audio URLs
-      const stories = await prisma.story.findMany({
-        select: { id: true, title: true, slug: true, type: true, thumbnailUrl: true },
-      });
-      const chapters = await prisma.chapter.findMany({
-        where: { audioUrl: { not: null } },
-        select: { id: true, title: true, audioUrl: true, story: { select: { id: true, title: true, slug: true, type: true } } },
-      });
-      const films = await prisma.filmReview.findMany({
-        select: { id: true, title: true, slug: true, thumbnailUrl: true },
-      });
+      // Query all entities that reference uploaded files
+      const [stories, chapters, filmReviews] = await Promise.all([
+        prisma.story.findMany({
+          select: {
+            title: true,
+            slug: true,
+            thumbnailUrl: true,
+            type: true,
+          },
+        }),
+        prisma.chapter.findMany({
+          select: {
+            number: true,
+            title: true,
+            audioUrl: true,
+            story: { select: { title: true, slug: true } },
+          },
+        }),
+        prisma.filmReview
+          .findMany({
+            select: { title: true, slug: true, thumbnailUrl: true },
+          })
+          .catch(() => []),
+      ]);
 
-      // Build a map: filename -> [{ type, title, slug }]
-      const usageMap = {};
-
-      const extractFilename = (url) => {
-        if (!url) return null;
-        const parts = url.split("/");
-        return parts[parts.length - 1];
+      // Build URL → [usage descriptor] map
+      const urlToUsages = {};
+      const addUsage = (url, usage) => {
+        if (!url) return;
+        urlToUsages[url] = urlToUsages[url] || [];
+        urlToUsages[url].push(usage);
       };
 
       for (const story of stories) {
-        const fname = extractFilename(story.thumbnailUrl);
-        if (fname) {
-          if (!usageMap[fname]) usageMap[fname] = [];
-          usageMap[fname].push({
-            type: story.type === "AUDIO" ? "Truyện Audio" : "Truyện Text",
+        if (story.thumbnailUrl) {
+          addUsage(story.thumbnailUrl, {
+            type: story.type === "AUDIO" ? "Truyện audio" : "Truyện chữ",
             title: story.title,
             slug: story.slug,
           });
@@ -629,22 +629,18 @@ class MediaController {
       }
 
       for (const chapter of chapters) {
-        const fname = extractFilename(chapter.audioUrl);
-        if (fname) {
-          if (!usageMap[fname]) usageMap[fname] = [];
-          usageMap[fname].push({
-            type: "Audio Chapter",
-            title: `${chapter.story.title} - ${chapter.title}`,
-            slug: chapter.story.slug,
+        if (chapter.audioUrl) {
+          addUsage(chapter.audioUrl, {
+            type: "Chương truyện",
+            title: `${chapter.story?.title} – ${chapter.title || `Chương ${chapter.number}`}`,
+            slug: chapter.story?.slug,
           });
         }
       }
 
-      for (const film of films) {
-        const fname = extractFilename(film.thumbnailUrl);
-        if (fname) {
-          if (!usageMap[fname]) usageMap[fname] = [];
-          usageMap[fname].push({
+      for (const film of filmReviews) {
+        if (film.thumbnailUrl) {
+          addUsage(film.thumbnailUrl, {
             type: "Phim",
             title: film.title,
             slug: film.slug,
@@ -652,10 +648,32 @@ class MediaController {
         }
       }
 
-      res.json({ usageMap });
+      // Scan filesystem to build usageMap keyed by filename
+      const audioDir = path.join(config.uploadPath || "./uploads", "audio");
+      const imageDir = path.join(config.uploadPath || "./uploads", "image");
+
+      const audioFiles = fs.existsSync(audioDir)
+        ? fs.readdirSync(audioDir)
+        : [];
+      const imageFiles = fs.existsSync(imageDir)
+        ? fs.readdirSync(imageDir)
+        : [];
+
+      const usageMap = {};
+      for (const filename of audioFiles) {
+        usageMap[filename] = urlToUsages[`/uploads/audio/${filename}`] || [];
+      }
+      for (const filename of imageFiles) {
+        usageMap[filename] = urlToUsages[`/uploads/image/${filename}`] || [];
+      }
+
+      res.json({ success: true, usageMap });
     } catch (error) {
-      console.error("Get file usages error:", error);
-      res.status(500).json({ error: "Internal Server Error", message: "Lỗi lấy thông tin sử dụng file" });
+      console.error("Error getting file usages:", error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to get file usages",
+      });
     }
   }
 }
