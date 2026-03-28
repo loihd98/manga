@@ -34,7 +34,7 @@ module.exports = {
 
   // Upload
   uploadPath: process.env.UPLOAD_PATH || "/uploads",
-  maxFileSize: 100 * 1024 * 1024, // 100MB
+  maxFileSize: 1536 * 1024 * 1024, // 1.5GB
 
   // CORS
   corsOrigin: process.env.FRONTEND_URL || "https://khotruyen.vn",
