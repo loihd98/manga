@@ -125,7 +125,7 @@ const AdminStoryForm: React.FC<AdminStoryFormProps> = ({
 
   const uploadChapterAudio = async (idx: number, file: File) => {
     if (!file.type.startsWith("audio/")) { toast.error("Vui lòng chọn file audio"); return; }
-    if (file.size > 200 * 1024 * 1024) { toast.error("File audio không được vượt quá 200MB"); return; }
+    if (file.size > 1536 * 1024 * 1024) { toast.error("File audio không được vượt quá 1.5GB"); return; }
     updateTextChapter(idx, "uploadingAudio", true);
     updateTextChapter(idx, "audioPreview", URL.createObjectURL(file));
     try {
@@ -342,8 +342,8 @@ const AdminStoryForm: React.FC<AdminStoryFormProps> = ({
       toast.error("Vui lòng chọn file audio");
       return;
     }
-    if (file.size > 200 * 1024 * 1024) {
-      toast.error("File audio không được vượt quá 200MB");
+    if (file.size > 1536 * 1024 * 1024) {
+      toast.error("File audio không được vượt quá 1.5GB");
       return;
     }
     try {
@@ -915,7 +915,7 @@ const AdminStoryForm: React.FC<AdminStoryFormProps> = ({
           </button>
           <button
             type="submit"
-            disabled={loading || uploading}
+            disabled={loading || uploading || uploadingChapter1}
             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {loading ? (

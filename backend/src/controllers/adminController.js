@@ -975,6 +975,18 @@ class AdminController {
             where: { id: chapter1.id },
             data: chapterUpdate,
           });
+        } else if (story.type === "AUDIO") {
+          // Chapter 1 was never created (e.g., story created via a different path)
+          // Create it now so future edits also work
+          await prisma.chapter.create({
+            data: {
+              storyId: id,
+              number: 1,
+              title: chapter1Title?.trim() || "Chương 1",
+              audioUrl: chapter1AudioUrl || null,
+              isLocked: false,
+            },
+          });
         }
       }
 
