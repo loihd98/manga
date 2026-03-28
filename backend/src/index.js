@@ -8,6 +8,9 @@ const config = require("./config");
 
 const app = express();
 
+// Trust first proxy (nginx) — required for express-rate-limit and real IP detection
+app.set("trust proxy", 1);
+
 // Security middleware
 app.use(
   helmet({
