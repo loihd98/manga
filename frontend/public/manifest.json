@@ -1,7 +1,7 @@
 {
   "name": "vivutruyenhay.com",
   "short_name": "vivutruyenghay",
-  "description": "Kho Truyện Hay là website tổng hợp truyện audio, truyện đọc online và phim hay với nhiều thể loại hấp dẫn. Nghe truyện audio miễn phí, đọc truyện online và xem phim hay mỗi ngày.",
+  "description": "Vi Vu Truyện Hay là website tổng hợp truyện audio, truyện đọc online và phim hay với nhiều thể loại hấp dẫn. Nghe truyện audio miễn phí, đọc truyện online và xem phim hay mỗi ngày.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#111827",
