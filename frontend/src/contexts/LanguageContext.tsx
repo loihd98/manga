@@ -72,7 +72,7 @@ const translations: Record<Language, TranslationKeys> = {
     "home.ongoing_stories": "Đang cập nhật",
 
     // Stories page
-    "stories.title": "Kho truyện",
+    "stories.title": "Vi Vu Truyện Hay",
     "stories.filter.all": "Tất cả",
     "stories.filter.text": "Văn bản",
     "stories.filter.audio": "Audio",
@@ -627,12 +627,12 @@ const languages: Array<{
   nativeName: string;
   flag: string;
 }> = [
-  { code: "vi", name: "Vietnamese", nativeName: "Tiếng Việt", flag: "🇻🇳" },
-  { code: "en", name: "English", nativeName: "English", flag: "🇺🇸" },
-  { code: "zh", name: "Chinese", nativeName: "中文", flag: "🇨🇳" },
-  { code: "ko", name: "Korean", nativeName: "한국어", flag: "🇰🇷" },
-  { code: "ja", name: "Japanese", nativeName: "日本語", flag: "🇯🇵" },
-];
+    { code: "vi", name: "Vietnamese", nativeName: "Tiếng Việt", flag: "🇻🇳" },
+    { code: "en", name: "English", nativeName: "English", flag: "🇺🇸" },
+    { code: "zh", name: "Chinese", nativeName: "中文", flag: "🇨🇳" },
+    { code: "ko", name: "Korean", nativeName: "한국어", flag: "🇰🇷" },
+    { code: "ja", name: "Japanese", nativeName: "日本語", flag: "🇯🇵" },
+  ];
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({
   children,
