@@ -170,7 +170,7 @@ const Navbar: React.FC = () => {
                 className="rounded-lg mr-2"
                 priority
               />
-              khotruyen.vn
+              vivutruyenhay.com
             </div>
           </Link>
 

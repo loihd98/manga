@@ -54,7 +54,7 @@ export default async function Image() {
             color: "#bfdbfe",
           }}
         >
-          khotruyen.vn
+          vivutruyenhay.com
         </div>
       </div>
     ),

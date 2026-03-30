@@ -3,6 +3,7 @@
 ## Overview
 
 Hệ thống RBAC (Role-Based Access Control) với:
+
 - 3 vai trò: `USER`, `ADMIN`, `EDITOR`
 - Phân quyền theo tài nguyên (resource-based permissions)
 - MediaUsage tracking (theo dõi sử dụng media)
@@ -25,10 +26,10 @@ Hệ thống RBAC (Role-Based Access Control) với:
 docker exec -t <postgres_container> pg_dump -U <user> -d <dbname> > backup_$(date +%Y%m%d_%H%M%S).sql
 
 # Or if using docker-compose
-docker-compose exec db pg_dump -U postgres -d khotruyen > backup_pre_rbac.sql
+docker-compose exec db pg_dump -U postgres -d vivutruyenghay > backup_pre_rbac.sql
 
 # Backup toàn bộ volumes
-docker run --rm -v khotruyen_pgdata:/data -v $(pwd):/backup alpine tar czf /backup/pgdata_backup.tar.gz /data
+docker run --rm -v vivutruyenhay_pgdata:/data -v $(pwd):/backup alpine tar czf /backup/pgdata_backup.tar.gz /data
 ```
 
 ---
@@ -95,8 +96,8 @@ SELECT role, count(*) FROM role_permissions WHERE granted = true GROUP BY role;
 --   USER     → ~3
 
 -- Kiểm tra schema mới
-SELECT column_name, data_type 
-FROM information_schema.columns 
+SELECT column_name, data_type
+FROM information_schema.columns
 WHERE table_name = 'permissions';
 
 -- Kiểm tra media_usages table
@@ -194,6 +195,7 @@ Hoặc qua Admin Panel → Users → Update Role.
 ## 9. Cấu trúc files mới
 
 ### Backend
+
 - `prisma/schema.prisma` — Thêm Permission, RolePermission, MediaUsage models
 - `src/utils/permissionService.js` — Permission cache & check logic
 - `src/utils/mediaUsageService.js` — Media usage tracking
@@ -203,6 +205,7 @@ Hoặc qua Admin Panel → Users → Update Role.
 - `src/middleware/auth.js` — Thêm requirePermission, requireAdminAccess
 
 ### Frontend
+
 - `src/types/index.ts` — Permission, PermissionMatrix types
 - `src/types/admin.ts` — Thêm "roles" tab
 - `src/hooks/usePermissions.ts` — Permission check hook

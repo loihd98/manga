@@ -46,7 +46,7 @@ export async function generateMetadata({
       "truyện audio",
       "nghe truyện",
       ...(story.genres?.map((g: any) => g.name) || []),
-      "khotruyen",
+      "vivutruyenghay",
     ],
     openGraph: {
       title,
@@ -59,7 +59,7 @@ export async function generateMetadata({
           {
             url: story.thumbnailUrl.startsWith("http")
               ? story.thumbnailUrl
-              : `${process.env.NEXT_PUBLIC_SITE_URL || "https://khotruyen.vn"}${story.thumbnailUrl}`,
+              : `${process.env.NEXT_PUBLIC_SITE_URL || "https://vivutruyenhay.com"}${story.thumbnailUrl}`,
             width: 1200,
             height: 630,
             alt: story.title,

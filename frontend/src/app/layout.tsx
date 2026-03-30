@@ -7,7 +7,7 @@ import ThemeProvider from "@/components/layout/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://khotruyen.vn";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vivutruyenhay.com";
 const siteName = "Kho Truyện Hay";
 const siteDescription =
   "Kho Truyện Hay là website tổng hợp truyện audio, truyện đọc online và phim hay với nhiều thể loại hấp dẫn như truyện ma, truyện trinh thám, truyện ngôn tình, truyện đô thị và truyện tình cảm người lớn. Nội dung trên website được cập nhật liên tục mỗi ngày giúp người nghe và người đọc có thể dễ dàng tìm thấy những câu chuyện hấp dẫn. Kho truyện audio tại Kho Truyện Hay bao gồm hàng nghìn truyện mp3 với nhiều thể loại như truyện ma, truyện trinh thám, truyện ngôn tình, truyện đô thị, truyện kiếm hiệp và truyện tiên hiệp. Người dùng có thể nghe truyện online miễn phí với chất lượng âm thanh tốt và nội dung được chọn lọc.";
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   keywords: [
-    "khotruyen",
-    "khotruyen.vn",
+    "vivutruyenghay",
+    "vivutruyenhay.com",
     "Kho truyện hay",
     "vi vu truyện hay",
     "Kho truyen hay",
@@ -162,9 +162,9 @@ export default function RootLayout({
         <meta name="theme-color" content="#1e40af" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="khotruyen.vn" />
+        <meta name="apple-mobile-web-app-title" content="vivutruyenhay.com" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="application-name" content="khotruyen.vn" />
+        <meta name="application-name" content="vivutruyenhay.com" />
         <link rel="author" href={`${siteUrl}/humans.txt`} />
         {/* Inline script to force dark theme before React hydration */}
         <script
