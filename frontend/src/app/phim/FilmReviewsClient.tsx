@@ -286,7 +286,8 @@ const FilmReviewsClient: React.FC<FilmReviewsClientProps> = ({
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+           xl:grid-cols-4 gap-4 sm:gap-6">
             {filmReviews.map((review) => (
               <div
                 key={review.id}
@@ -308,7 +309,7 @@ const FilmReviewsClient: React.FC<FilmReviewsClientProps> = ({
                     <img
                       src={getMediaUrl(review.thumbnailUrl)}
                       alt={review.title}
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="max-h-[50px] w-auto object-cover group-hover:scale-105 transition-transform duration-300"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.style.display = "none";
