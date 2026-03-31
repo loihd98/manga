@@ -6,7 +6,6 @@ const nextConfig = {
   output: "standalone",
 
   experimental: {
-    optimizeCss: true,
     serverComponentsExternalPackages: ["sharp"],
   },
 
