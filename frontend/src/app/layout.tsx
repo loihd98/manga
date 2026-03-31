@@ -131,6 +131,8 @@ export default function RootLayout({
             __html: `(function(){try{var p=JSON.parse(localStorage.getItem('persist:root')||'{}');var u=JSON.parse(p.ui||'{}');if(u.theme==='dark'){document.documentElement.classList.add('dark')}else{document.documentElement.classList.remove('dark')}}catch(e){}})()`,
           }}
         />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1838006408938589"
+          crossOrigin="anonymous"></script>
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         <GoogleAnalytics />
